@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+.bodyPart {
+  position: absolute;
+  z-index: 1;
+}
+
+canvas {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+img {
+	display: none;
+}
