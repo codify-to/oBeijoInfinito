@@ -3,12 +3,13 @@ CATEGORY_FRONT_ARM = 2
 CATEGORY_BACK_ARM = 4
 CATEGORY_BACK_ARM = 8
 CATEGORY_BACK_LEG = 16
+CATEGORY_FRONT_LEG = 32
 
 window.drawDebugWorld = true
 
 Event.observe window, 'load', =>
 	# Get all body parts
-	@bodyParts = $$(".bodyPart")
+	@bodyParts = $$(".bodyPart").reverse()
 
 
 	# Initialize the world
@@ -16,20 +17,6 @@ Event.observe window, 'load', =>
 	worldHeight = window.innerHeight
 	gravity = new b2Vec2(0, 0) #300)
 	world = new b2World(gravity, true);
-
-	# Create the circle
-	# Body
-	circleBd = new b2BodyDef();
-	circleBd.type = b2Body.b2_dynamicBody;
-	circleBd.position.Set(30, 30);
-	# Fixture
-	fd = new b2FixtureDef()
-	fd.density = 1.0
-	fd.restitution = 1.0
-	fd.friction = 0
-	fd.shape = new b2CircleShape(20)
-	# Create it
-	world.CreateBody(circleBd).CreateFixture(fd)
 
 	# Put every body part in it's initial position
 	@bodyParts.each (part, index)->
@@ -51,8 +38,8 @@ Event.observe window, 'load', =>
 		fd.shape = new b2PolygonShape()
 		fd.shape.SetAsBox(bodyConfig.width/2, bodyConfig.height/2)
 		# Collision
-		fd.filter.categoryBits = bodyConfig.category || 1;
-		fd.filter.maskBits = bodyConfig.mask || 0;
+		fd.filter.categoryBits = 0; bodyConfig.category || 1;
+		fd.filter.maskBits = 0; bodyConfig.mask || 0;
 		# Body
 		bodyDef = new b2BodyDef()
 		bodyDef.type = b2Body.b2_dynamicBody
@@ -62,7 +49,7 @@ Event.observe window, 'load', =>
 		(b = world.CreateBody(bodyDef)).CreateFixture(fd)
 
 	# Setup degub drawing
-	canvas = $("debugCanvas")
+	canvas = $("canvas")
 	if canvas
 		canvas.setStyle display: 'block'
 		ctx = canvas.getContext('2d')
@@ -73,9 +60,7 @@ Event.observe window, 'load', =>
 
 	@step = (cnt)->
 		world.Step(1.0/60, 1, 1);
-		if window.drawDebugWorld
-			ctx.clearRect 0, 0, worldWidth, worldHeight
-			drawWorld world, ctx
+		ctx.clearRect 0, 0, worldWidth, worldHeight
 		
 		# update mouse
 		mouseController.update();
@@ -98,6 +83,10 @@ Event.observe window, 'load', =>
 			ctx.restore()
 
 			b = b.m_next
+
+		if window.drawDebugWorld
+			drawWorld world, ctx
+
 		# console.log "break!"
 		setTimeout('step(' + (cnt || 0) + ')', 10);
 	step()
