@@ -139,6 +139,12 @@ Event.observe window, 'load', =>
 		if window.drawDebugWorld
 			drawWorld world, ctx
 
+		# Canvas size
+		if canvas.width != window.innerWidth
+			canvas.width  = window.innerWidth
+  			canvas.height = window.innerHeight
+  			updateGround()
+
 		# console.log "break!"
 		setTimeout('step(' + (cnt || 0) + ')', 10);
 	step()

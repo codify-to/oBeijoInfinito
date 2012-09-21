@@ -11,6 +11,7 @@ audio {
 	bottom: 30px;
 	width: 90%;
 	z-index: : 1001;
+	margin: auto;
 }
 
 canvas {

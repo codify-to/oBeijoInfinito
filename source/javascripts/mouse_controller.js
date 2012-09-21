@@ -7,21 +7,31 @@ function MouseController(world){
 	t = this;
 
 	// Setup mouse
-	document.addEventListener('mousedown', function(e){
-		t.mouseDown = true
-		mouseMove(e);
-		document.addEventListener("mousemove", mouseMove, true);
-	})
-	document.addEventListener('mouseup', function(){
-		document.removeEventListener("mousemove", mouseMove, true)
-		t.mouseDown = false;
-		mouseX = undefined;
-		mouseY = undefined;
-	})
+  function mouseDownHandler(e){
+    t.mouseDown = true
+    mouseMove(e);
+    document.addEventListener("mousemove", mouseMove, true);
+    document.addEventListener("touchmove", mouseMove, true);
+  }
+  console.log("setup")
+  function mouseUpHandler(){
+    document.removeEventListener("mousemove", mouseMove, true)
+    document.removeEventListener("touchmove", mouseMove, true);
+    t.mouseDown = false;
+    mouseX = undefined;
+    mouseY = undefined;
+  }
 	function mouseMove(e){
-		mouseX = e.clientX // # (e.clientX - canvas.getBoundingClientRect().left) / SCALE;
-		mouseY = e.clientY //# (e.clientY - canvas.getBoundingClientRect().top) / SCALE;
+    mouseX = e.clientX || e.pageX // # (e.clientX - canvas.getBoundingClientRect().left) / SCALE;
+		mouseY = e.clientY || e.pageY//# (e.clientY - canvas.getBoundingClientRect().top) / SCALE;
+    console.log(mouseX, mouseY)
+
+    e.preventDefault()
 	}
+  document.addEventListener('mousedown', mouseDownHandler)
+  document.addEventListener('touchstart', mouseDownHandler)
+  document.addEventListener('mouseup', mouseUpHandler)
+  document.addEventListener('touchend', mouseUpHandler)
 }
 
 MouseController.prototype.update = function(){
