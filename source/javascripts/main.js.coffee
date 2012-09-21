@@ -5,7 +5,7 @@ CATEGORY_BACK_ARM = 8
 CATEGORY_BACK_LEG = 16
 CATEGORY_FRONT_LEG = 32
 
-window.drawDebugWorld = true
+window.drawDebugWorld = false
 window.debug = true
 
 Event.observe window, 'load', =>

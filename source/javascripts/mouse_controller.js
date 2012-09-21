@@ -41,7 +41,7 @@ MouseController.prototype.mouseDownAt = function(x, y) {
         md.bodyB = body;
         md.target.Set(x, y);
         md.collideConnected = true;
-        md.maxForce = 300.0 * body.GetMass();
+        md.maxForce = 10000.0 * body.GetMass();
         this.mouseJoint = this.world.CreateJoint(md);
         body.SetAwake(true);
 
