@@ -5,8 +5,10 @@ CATEGORY_BACK_ARM = 8
 CATEGORY_BACK_LEG = 16
 CATEGORY_FRONT_LEG = 32
 
+TOTAL_LIFE_FOCE = 20000
+
 window.drawDebugWorld = false
-window.debug = true
+window.debug = false
 
 Event.observe window, 'load', =>
 	# Get all body parts
@@ -18,6 +20,27 @@ Event.observe window, 'load', =>
 	worldHeight = window.innerHeight
 	gravity = new b2Vec2(0, 0) #300)
 	world = new b2World(gravity, true);
+
+	# Ground
+	fd = new b2FixtureDef()
+	fd.shape = new b2PolygonShape()
+	fd.shape.SetAsBox(worldWidth, 10)
+	bodyDef = new b2BodyDef()
+	bodyDef.type = b2Body.b2_staticBody
+	bodyDef.position.Set(0, 0);
+	world.CreateBody(bodyDef).CreateFixture(fd)
+	bodyDef.position.Set(0, worldHeight)
+	world.CreateBody(bodyDef).CreateFixture(fd)
+	# Walls
+	fd = new b2FixtureDef()
+	fd.shape = new b2PolygonShape()
+	fd.shape.SetAsBox(10, worldHeight)
+	bodyDef = new b2BodyDef()
+	bodyDef.type = b2Body.b2_staticBody
+	bodyDef.position.Set(0, 0);
+	world.CreateBody(bodyDef).CreateFixture(fd)
+	bodyDef.position.Set(worldWidth, 0)
+	world.CreateBody(bodyDef).CreateFixture(fd)
 
 	# Put every body part in it's initial position
 	@bodyParts.each (part, index)=>
@@ -34,7 +57,7 @@ Event.observe window, 'load', =>
 		# fixture
 		fd = new b2FixtureDef()
 		fd.density = 1
-		fd.friction = 0.8
+		fd.friction = 1
 		fd.restitution = 0 # Do not bounce
 		fd.shape = new b2PolygonShape()
 		fd.shape.SetAsBox(bodyConfig.width/2, bodyConfig.height/2)
@@ -49,6 +72,7 @@ Event.observe window, 'load', =>
 		# Create it in the world
 		@bodies[part.id] = world.CreateBody(bodyDef)
 		@bodies[part.id].CreateFixture(fd)
+
 	
 	# Create joints
 	for k, body of @bodies
@@ -60,6 +84,11 @@ Event.observe window, 'load', =>
 			continue if not jointData.to
 			# 
 			joint = new b2RevoluteJointDef()
+			joint.lowerAngle = -0.25 * Math.PI;
+			joint.upperAngle = 0.25 * Math.PI;
+			joint.enableLimit = true;
+
+
 			# joint.collideConnected = true
 			joint.Initialize body, jointData.to, new b2Vec2(worldWidth/2-jointData.x, worldHeight/2-jointData.y)
 			world.CreateJoint joint
@@ -80,6 +109,13 @@ Event.observe window, 'load', =>
 		
 		# update mouse
 		mouseController.update();
+
+		bodies.cabecas.ApplyImpulse(new b2Vec2(0, -TOTAL_LIFE_FOCE), bodies.cabecas.GetWorldCenter())
+		# 
+		bodies.ela_pe_frente.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.ela_pe_frente.GetWorldCenter())
+		bodies.ela_pe_tras.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.ela_pe_tras.GetWorldCenter())
+		bodies.ele_pe_frente.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.ele_pe_frente.GetWorldCenter())
+		bodies.ele_pe_tras.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.ele_pe_tras.GetWorldCenter())
 
 		# Update image positions
 		b = world.m_bodyList
