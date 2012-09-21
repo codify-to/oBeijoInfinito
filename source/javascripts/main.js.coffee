@@ -84,8 +84,8 @@ Event.observe window, 'load', =>
 			continue if not jointData.to
 			# 
 			joint = new b2RevoluteJointDef()
-			joint.lowerAngle = -0.25 * Math.PI;
-			joint.upperAngle = 0.25 * Math.PI;
+			joint.lowerAngle = (if jointData.lAngle != undefined then jointData.lAngle else -0.25) * Math.PI;
+			joint.upperAngle = (if jointData.uAngle != undefined then jointData.uAngle else 0.25) * Math.PI;
 			joint.enableLimit = true;
 
 

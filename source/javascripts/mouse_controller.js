@@ -49,16 +49,6 @@ MouseController.prototype.mouseDownAt = function(x, y) {
 
           //RevoluteJoint
           console.log('data-joint="{x: ' + (window.innerWidth/2 - x) + ', y: ' + (window.innerHeight/2 - y) + ', to: bodies.' + body.GetUserData().id + '}"')
-
-          // //Distance joint
-          // body.x = x - body.GetPosition().x - body.GetUserData().bodyConfig.width/2
-          // body.y = y - body.GetPosition().x - body.GetUserData().bodyConfig.height/2
-          // window.b = body
-
-          // console.log("tick")
-          // if(window.lastBody)
-          //   console.log('{from: {x: ' + lastBody.x + ', y: ' + lastBody.y + '}, to: {x: ' + body.x + ', y: ' + body.y + ', body: bodies.' + body.GetUserData().id + '}}')
-          // window.lastBody = body;
         }
      }
   } else {
