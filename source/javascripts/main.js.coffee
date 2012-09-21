@@ -6,11 +6,12 @@ CATEGORY_BACK_LEG = 16
 CATEGORY_FRONT_LEG = 32
 
 window.drawDebugWorld = true
+window.debug = true
 
 Event.observe window, 'load', =>
 	# Get all body parts
 	@bodyParts = $$(".bodyPart").reverse()
-
+	@bodies = {}
 
 	# Initialize the world
 	worldWidth = window.innerWidth
@@ -19,8 +20,7 @@ Event.observe window, 'load', =>
 	world = new b2World(gravity, true);
 
 	# Put every body part in it's initial position
-	@bodyParts.each (part, index)->
-
+	@bodyParts.each (part, index)=>
 		return if not part.readAttribute("data-body")
 
 		eval "bodyConfig = { #{part.readAttribute("data-body")} }"
@@ -34,19 +34,35 @@ Event.observe window, 'load', =>
 		# fixture
 		fd = new b2FixtureDef()
 		fd.density = 1
-		fd.friction = 0.3
+		fd.friction = 0.8
+		fd.restitution = 0 # Do not bounce
 		fd.shape = new b2PolygonShape()
 		fd.shape.SetAsBox(bodyConfig.width/2, bodyConfig.height/2)
 		# Collision
-		fd.filter.categoryBits = 0; bodyConfig.category || 1;
-		fd.filter.maskBits = 0; bodyConfig.mask || 0;
+		fd.filter.categoryBits = bodyConfig.category || 1;
+		fd.filter.maskBits = bodyConfig.mask || 0;
 		# Body
 		bodyDef = new b2BodyDef()
 		bodyDef.type = b2Body.b2_dynamicBody
 		bodyDef.position.Set(worldWidth/2 + bodyConfig.x, worldHeight/2 + bodyConfig.y);
 		bodyDef.userData = part
 		# Create it in the world
-		(b = world.CreateBody(bodyDef)).CreateFixture(fd)
+		@bodies[part.id] = world.CreateBody(bodyDef)
+		@bodies[part.id].CreateFixture(fd)
+	
+	# Create joints
+	for k, body of @bodies
+		img = body.GetUserData()
+		continue if not img.readAttribute("data-joint")
+		# 
+		eval "var joints = [ #{ img.readAttribute("data-joint") } ]"
+		for jointData in joints
+			continue if not jointData.to
+			# 
+			joint = new b2RevoluteJointDef()
+			# joint.collideConnected = true
+			joint.Initialize body, jointData.to, new b2Vec2(worldWidth/2-jointData.x, worldHeight/2-jointData.y)
+			world.CreateJoint joint
 
 	# Setup degub drawing
 	canvas = $("canvas")

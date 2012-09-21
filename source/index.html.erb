@@ -3,53 +3,53 @@
 <!-- ************ ELA ************ -->
 
 <!-- Braço trás -->
-<img src="images/ela_braco_tras.png" data-body="x: -45, y: -165, height: 125, width: 25, offset: [15, 20], category: CATEGORY_BACK_ARM, mask: CATEGORY_BACK_ARM" id="ela_braco_tras" class="bodyPart">
-<img src="images/ela_antebraco_tras.png" data-body="x: -45, y: -50, width: 17, height: 140, offset: [35, 13]" id="ela_antebraco_tras" class="bodyPart">
-<img src="images/ela_mao_tras.png" data-body="x: -43, y: 35, width: 20, height: 74, offset: [17, 15]" id="ela_mao_tras" class="bodyPart">
+<img src="images/ela_braco_tras.png" data-body="x: -45, y: -165, height: 125, width: 25, offset: [15, 20], category: CATEGORY_BACK_ARM, mask: CATEGORY_BACK_ARM" id="ela_braco_tras" class="bodyPart" data-joint="{x: 47, y: 221, to: bodies.ela_peito}">
+<img src="images/ela_antebraco_tras.png" data-body="x: -45, y: -50, width: 17, height: 140, offset: [35, 13], category: CATEGORY_BACK_ARM, mask: CATEGORY_BACK_ARM" id="ela_antebraco_tras" class="bodyPart" data-joint="{x: 45, y: 114, to: bodies.ela_braco_tras}">
+<img src="images/ela_mao_tras.png" data-body="x: -43, y: 35, width: 20, height: 74, offset: [17, 15], category: CATEGORY_BACK_ARM, mask: CATEGORY_BACK_ARM" id="ela_mao_tras" class="bodyPart" data-joint="{x: 46, y: -11, to: bodies.ela_antebraco_tras}">
 <!-- Torso -->
-<img src="images/ela_peito.png" data-body="x: -39, y: -245, height: 30, width: 21, offset: [60, 13], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ela_peito" class="bodyPart">
-<img src="images/ela_costa.png" data-body="x: -45, y: -182, height: 59, width: 28, offset: [46, 40], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ela_costa" class="bodyPart">
-<img src="images/ela_barriga.png" data-body="x: -46, y: -120, height: 75, width: 50, offset: [18, 13], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ela_barriga" class="bodyPart">
+<img src="images/ela_peito.png" data-body="x: -39, y: -215, height: 70, width: 51, offset: [40, 13], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ela_peito" class="bodyPart" data-joint="{x: 45.5, y: 200, to: bodies.ela_costa}"  >
+<img src="images/ela_costa.png" data-body="x: -45, y: -182, height: 90, width: 48, offset: [36, 0], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ela_costa" class="bodyPart" >
+<img src="images/ela_barriga.png" data-body="x: -46, y: -120, height: 75, width: 50, offset: [18, 13], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ela_barriga" class="bodyPart" data-joint="{x: 48.5, y: 145, to: bodies.ela_costa}"  >
 <!-- Perna trás -->
-<img src="images/ela_coxa_tras.png" data-body="x: -40, y: 32, width: 55, height: 205, offset: [40, 22], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ela_coxa_tras" class="bodyPart">
-<img src="images/ela_canela_tras.png" data-body="x: -200+167, y: -100+310, width: 36, height: 202, offset: [72, 28], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ela_canela_tras" class="bodyPart">
-<img src="images/ela_pe.png" data-body="x: -6, y: 318, width: 78, height: 51, offset: [20, 48], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ela_pe" class="bodyPart">
-<img src="images/ela_ponta_pe.png" data-body="x: 200-177, y: 336, width: 25, height: 20, offset: [20, 10], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ela_ponta_pe" class="bodyPart">
+<img src="images/ela_coxa_tras.png" data-body="x: -40, y: 32, width: 55, height: 205, offset: [40, 22], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ela_coxa_tras" class="bodyPart" data-joint="{x: 32, y: -125, to: bodies.ela_canela_tras}" >
+<img src="images/ela_canela_tras.png" data-body="x: -200+167, y: -100+310, width: 36, height: 202, offset: [72, 28], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ela_canela_tras" class="bodyPart" >
+<img src="images/ela_pe.png" data-body="x: -6, y: 318, width: 78, height: 51, offset: [20, 48], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ela_pe" class="bodyPart" data-joint="{x: 35, y: -297, to: bodies.ela_canela_tras}">
+<img src="images/ela_ponta_pe.png" data-body="x: 200-177, y: 336, width: 25, height: 20, offset: [20, 10], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ela_ponta_pe" class="bodyPart" data-joint="{x: -17, y: -334, to: bodies.ela_pe}" >
 <!-- Quadril -->
-<img src="images/ela_quadril.png" data-body="x: -40, y: -70, width: 63, height: 50, offset: [21, 24], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ela_quadril" class="bodyPart">
+<img src="images/ela_quadril.png" data-body="x: -40, y: -70, width: 63, height: 50, offset: [21, 24], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ela_quadril" class="bodyPart" data-joint="{x: 44, y: 90, to: bodies.ela_barriga}, {x: 39, y: 67, to: bodies.ela_coxa_tras}">
 <!-- Perna Frente -->
-<img src="images/ela_coxa_frente.png" data-body="x: -38, y: 34, width: 48, height: 219, offset: [27, 14], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ela_coxa_frente" class="bodyPart">
-<img src="images/ela_canela_frente.png" data-body="x: -44, y: 222, width: 34, height: 206, offset: [35, 15], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ela_canela_frente" class="bodyPart">
-<img src="images/ela_pe_2.png" data-body="x: -23, y: 337, width: 65, height: 70, offset: [15, 5], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ela_pe_2" class="bodyPart">
-<img src="images/ela_ponta_pe_2.png" data-body="x: 0, y: 360, width: 35, height: 20, offset: [20, 17]" id="ela_ponta_pe_2" class="bodyPart">
+<img src="images/ela_coxa_frente.png" data-body="x: -38, y: 34, width: 48, height: 219, offset: [27, 14], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ela_coxa_frente" class="bodyPart" data-joint="{x: 37, y: 67, to: bodies.ela_quadril}, {x: 43, y: -135, to: bodies.ela_canela_frente}" >
+<img src="images/ela_canela_frente.png" data-body="x: -44, y: 222, width: 34, height: 206, offset: [35, 15], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ela_canela_frente" class="bodyPart">
+<img src="images/ela_pe_2.png" data-body="x: -23, y: 337, width: 65, height: 70, offset: [15, 5], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ela_pe_2" class="bodyPart" data-joint="{x: 46, y: -309, to: bodies.ela_canela_frente}" >
+<img src="images/ela_ponta_pe_2.png" data-body="x: 0, y: 360, width: 35, height: 20, offset: [20, 17], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ela_ponta_pe_2" class="bodyPart" data-joint="{x: 7, y: -359, to: bodies.ela_pe_2}" >
 <!-- Braço frente -->
-<img src="images/ela_braco_frente.png" data-body="x: -45, y: -165, height: 115, width: 25, offset: [17, 18], category: CATEGORY_FRONT_ARM, mask: CATEGORY_FRONT_ARM" id="ela_braco_frente" class="bodyPart">
-<img src="images/ela_antebraco_frente.png" data-body="x: -43, y: -60, width: 18, height: 140, offset: [52, 37]" id="ela_antebraco_frente" class="bodyPart">
-<img src="images/ela_mao_frente.png" data-body="x: -41, y: 24, width: 20, height: 64, offset: [35, 9]" id="ela_mao_frente" class="bodyPart">
+<img src="images/ela_braco_frente.png" data-body="x: -45, y: -165, height: 115, width: 25, offset: [17, 18], category: CATEGORY_FRONT_ARM, mask: CATEGORY_FRONT_ARM" id="ela_braco_frente" class="bodyPart" data-joint="{x: 44, y: 220, to: bodies.ela_costa}">
+<img src="images/ela_antebraco_frente.png" data-body="x: -43, y: -60, width: 18, height: 140, offset: [52, 37], category: CATEGORY_FRONT_ARM, mask: CATEGORY_FRONT_ARM" id="ela_antebraco_frente" class="bodyPart" data-joint="{x: 43, y: 120, to: bodies.ela_braco_frente}">
+<img src="images/ela_mao_frente.png" data-body="x: -41, y: 24, width: 20, height: 64, offset: [35, 9], category: CATEGORY_FRONT_ARM, mask: CATEGORY_FRONT_ARM" id="ela_mao_frente" class="bodyPart" data-joint="{x: 43, y: -3, to: bodies.ela_antebraco_frente}">
 
 <!-- ************ ELE ************ -->
 
 <!-- Braço trás -->
-<img src="images/ele_braco_tras.png" data-body="x: 44, y: -165, width: 32, height: 131, offset: [12, 17]" id="ele_braco_tras" class="bodyPart">
-<img src="images/ele_antebraco_tras.png" data-body="x: 49, y: -57, width: 28, height: 129, offset: [10, 14]" id="ele_antebraco_tras" class="bodyPart">
-<img src="images/ele_mao_tas.png" data-body="x: 50, y: 20, width: 25, height: 58, offset: [20, 25]" id="ele_mao_tas" class="bodyPart">
+<img src="images/ele_braco_tras.png" data-body="x: 44, y: -165, width: 32, height: 131, offset: [12, 17], category: CATEGORY_BACK_ARM, mask: CATEGORY_BACK_ARM" id="ele_braco_tras" class="bodyPart">
+<img src="images/ele_antebraco_tras.png" data-body="x: 49, y: -57, width: 28, height: 129, offset: [10, 14], category: CATEGORY_BACK_ARM, mask: CATEGORY_BACK_ARM" id="ele_antebraco_tras" class="bodyPart" data-joint="{x: -48, y: 111, to: bodies.ele_braco_tras}" >
+<img src="images/ele_mao_tas.png" data-body="x: 50, y: 20, width: 25, height: 58, offset: [20, 25], category: CATEGORY_BACK_ARM, mask: CATEGORY_BACK_ARM" id="ele_mao_tas" class="bodyPart" data-joint="{x: -48, y: 0, to: bodies.ele_antebraco_tras}">
 <!-- Perna trás -->
-<img src="images/ele_coxa_tras.png" data-body="x: 55, y: 30, width: 62, height: 227, offset: [30, 15]" id="ele_coxa_tras" class="bodyPart">
-<img src="images/ele_canela_tras.png" data-body="x: 40, y: 207, width: 32, height: 194, offset: [10, 10]" id="ele_canela_tras" class="bodyPart">
-<img src="images/ele_pe_tras.png" data-body="x: 15, y: 310, width: 88, height: 54, offset: [10, 10]" id="ele_pe_tras" class="bodyPart">
+<img src="images/ele_coxa_tras.png" data-body="x: 55, y: 30, width: 62, height: 227, offset: [30, 15], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ele_coxa_tras" class="bodyPart">
+<img src="images/ele_canela_tras.png" data-body="x: 40, y: 207, width: 32, height: 194, offset: [10, 10], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ele_canela_tras" class="bodyPart" data-joint="{x: -37, y: -138, to: bodies.ele_coxa_tras}" >
+<img src="images/ele_pe_tras.png" data-body="x: 15, y: 310, width: 88, height: 54, offset: [10, 10], category: CATEGORY_BACK_LEG, mask: CATEGORY_BACK_LEG" id="ele_pe_tras" class="bodyPart" data-joint="{x: -41, y: -298, to: bodies.ele_canela_tras}" >
 <!-- Torso -->
-<img src="images/ele_pescoco.png" data-body="x: 35, y: -240, width: 40, height: 47, offset: [10, 10]" id="ele_pescoco" class="bodyPart">
-<img src="images/ele_torax.png" data-body="x: 200-153, y: -181, width: 65, height: 105, offset: [20, 20]" id="ele_torax" class="bodyPart">
-<img src="images/ele_barriga.png" data-body="x: 48, y: -107, width: 48, height: 111, offset: [41, 16]" id="ele_barriga" class="bodyPart">
+<img src="images/ele_pescoco.png" data-body="x: 35, y: -240, width: 40, height: 47, offset: [10, 10], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ele_pescoco" class="bodyPart" data-joint="{x: -44, y: 225, to: bodies.ele_torax}">
+<img src="images/ele_torax.png" data-body="x: 200-153, y: -181, width: 65, height: 105, offset: [20, 20], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ele_torax" class="bodyPart" data-joint="{x: -47, y: 222, to: bodies.ele_braco_tras}, {x: -50, y: 227, to: bodies.ele_braco_frente}" >
+<img src="images/ele_barriga.png" data-body="x: 48, y: -107, width: 48, height: 111, offset: [41, 16], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="ele_barriga" class="bodyPart" data-joint="{x: -47.5, y: 148, to: bodies.ele_torax}, {x: -50, y: 71, to: bodies.ele_coxa_tras}" >
 <!-- Perna frente -->
-<img src="images/ele_coxa_frente.png" data-body="x: 55, y: 30, width: 60, height: 235, offset: [22, 10]" id="ele_coxa_frente" class="bodyPart">
-<img src="images/ele_canela_frente.png" data-body="x: 58, y: 200, width: 38, height: 193, offset: [16, 13]" id="ele_canela_frente" class="bodyPart">
-<img src="images/ele_pe_frente.png" data-body="x: 25, y: 290, width: 90, height: 45, offset: [15, 10]" id="ele_pe_frente" class="bodyPart">
+<img src="images/ele_coxa_frente.png" data-body="x: 55, y: 30, width: 60, height: 235, offset: [22, 10], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ele_coxa_frente" class="bodyPart" data-joint="{x: -53, y: 71, to: bodies.ele_barriga}" >
+<img src="images/ele_canela_frente.png" data-body="x: 58, y: 200, width: 38, height: 193, offset: [16, 13], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ele_canela_frente" class="bodyPart" data-joint="{x: -53, y: -133, to: bodies.ele_coxa_frente}" >
+<img src="images/ele_pe_frente.png" data-body="x: 25, y: 290, width: 90, height: 45, offset: [15, 10], category: CATEGORY_FRONT_LEG, mask: CATEGORY_FRONT_LEG" id="ele_pe_frente" class="bodyPart" data-joint="{x: -54, y: -281, to: bodies.ele_canela_frente}" >
 <!-- Braço fernte -->
-<img src="images/ele_braco_frente.png" data-body="x: 50, y: -166, width: 42, height: 147, offset: [11, 8]" id="ele_braco_frente" class="bodyPart">
-<img src="images/ele_antebraco_frente.png" data-body="x: 50, y: -50, width: 25, height: 128, offset: [5, 10]" id="ele_antebraco_frente" class="bodyPart">
-<img src="images/ele_mao_frente.png" data-body="x: 53, y: 25, width: 19, height: 68, offset: [18, 8]" id="ele_mao_frente" class="bodyPart">
+<img src="images/ele_braco_frente.png" data-body="x: 50, y: -166, width: 42, height: 147, offset: [11, 8], category: CATEGORY_FRONT_ARM, mask: CATEGORY_FRONT_ARM" id="ele_braco_frente" class="bodyPart">
+<img src="images/ele_antebraco_frente.png" data-body="x: 50, y: -50, width: 25, height: 128, offset: [5, 10], category: CATEGORY_FRONT_ARM, mask: CATEGORY_FRONT_ARM" id="ele_antebraco_frente" class="bodyPart" data-joint="{x: -49, y: 108, to: bodies.ele_braco_frente}" >
+<img src="images/ele_mao_frente.png" data-body="x: 53, y: 25, width: 19, height: 68, offset: [18, 8], category: CATEGORY_FRONT_ARM, mask: CATEGORY_FRONT_ARM" id="ele_mao_frente" class="bodyPart" data-joint="{x: -53, y: -5, to: bodies.ele_antebraco_frente}">
 
 <!-- ********** Cabeças ********** -->
 
-<img src="images/cabecas.png" data-body="x: 0, y: -300, height: 70, width: 140, offset: [58, 32], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="cabecas" class="bodyPart">
+<img src="images/cabecas.png" data-body="x: 0, y: -300, height: 90, width: 140, offset: [58, 12], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="cabecas" class="bodyPart" data-joint="{x: -34, y: 259, to: bodies.ele_pescoco}, {x: 23.5, y: 255, to: bodies.ela_peito}" >
