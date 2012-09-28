@@ -21,26 +21,35 @@ Event.observe window, 'load', =>
 	gravity = new b2Vec2(0, 0) #300)
 	world = new b2World(gravity, true);
 
-	# Ground
-	fd = new b2FixtureDef()
-	fd.shape = new b2PolygonShape()
-	fd.shape.SetAsBox(worldWidth, 10)
-	bodyDef = new b2BodyDef()
-	bodyDef.type = b2Body.b2_staticBody
-	bodyDef.position.Set(0, 0);
-	world.CreateBody(bodyDef).CreateFixture(fd)
-	bodyDef.position.Set(0, worldHeight)
-	world.CreateBody(bodyDef).CreateFixture(fd)
-	# Walls
-	fd = new b2FixtureDef()
-	fd.shape = new b2PolygonShape()
-	fd.shape.SetAsBox(10, worldHeight)
-	bodyDef = new b2BodyDef()
-	bodyDef.type = b2Body.b2_staticBody
-	bodyDef.position.Set(0, 0);
-	world.CreateBody(bodyDef).CreateFixture(fd)
-	bodyDef.position.Set(worldWidth, 0)
-	world.CreateBody(bodyDef).CreateFixture(fd)
+	@groundBodies = []
+	updateGround = ()=>
+		for b in @groundBodies
+			console.log "destroy", b
+			world.DestroyBody(b)
+		
+		# Ground
+		fd = new b2FixtureDef()
+		fd.shape = new b2PolygonShape()
+		fd.shape.SetAsBox(worldWidth, 10)
+		bodyDef = new b2BodyDef()
+		bodyDef.type = b2Body.b2_staticBody
+		bodyDef.position.Set(0, 0);
+		@groundBodies.push world.CreateBody(bodyDef).CreateFixture(fd)
+		bodyDef.position.Set(0, worldHeight)
+		@groundBodies.push world.CreateBody(bodyDef).CreateFixture(fd)
+		# Walls
+		fd = new b2FixtureDef()
+		fd.shape = new b2PolygonShape()
+		fd.shape.SetAsBox(10, worldHeight)
+		bodyDef = new b2BodyDef()
+		bodyDef.type = b2Body.b2_staticBody
+		bodyDef.position.Set(0, 0);
+		@groundBodies.push world.CreateBody(bodyDef).CreateFixture(fd)
+		bodyDef.position.Set(worldWidth, 0)
+		@groundBodies.push world.CreateBody(bodyDef).CreateFixture(fd)
+		console.log "ground updated"
+
+	updateGround()
 
 	# Put every body part in it's initial position
 	@bodyParts.each (part, index)=>
@@ -142,8 +151,8 @@ Event.observe window, 'load', =>
 		# Canvas size
 		if canvas.width != window.innerWidth
 			canvas.width  = window.innerWidth
-  			canvas.height = window.innerHeight
-  			updateGround()
+			canvas.height = window.innerHeight
+			updateGround()
 
 		# console.log "break!"
 		setTimeout('step(' + (cnt || 0) + ')', 10);
