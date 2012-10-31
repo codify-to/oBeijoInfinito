@@ -8,7 +8,8 @@
     <meta property="og:title" content="O Beijo Infinito" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="http://we.commit.to/other/beijo" />
-    <meta property="og:image" content="http://we.commit.to/other/beijo/images/cabecas.png" />
+    <meta property="og:image" content="http://obeijo.co/images/share.jpg" />
+    <meta property="og:description" content="uma espécie de videoclipe concebido por alexandre paschoalini e thany sanches, coreografado por commit, musicado por marcelo camelo e interpretado por thomas rorher">
     <meta name="viewport" content="width=1200" />
     
     <!-- Use title if it's in the page YAML frontmatter -->
@@ -19,6 +20,15 @@
   </head>
   
   <body class="<%= page_classes %>">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=298311596940080";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <div class="fb-like" data-href="http://obeijo.co" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
     <%= yield %>
   </body>
 </html>
