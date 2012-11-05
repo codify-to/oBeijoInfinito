@@ -57,6 +57,19 @@
 <img src="images/cabecas.png" data-body="x: 0, y: -300, height: 90, width: 140, offset: [58, 12], category: CATEGORY_BODY, mask: CATEGORY_BODY" id="cabecas" class="bodyPart" data-joint="{x: -34, y: 259, to: bodies.ele_pescoco}, {x: 23.5, y: 255, to: bodies.ela_peito}" >
 
 
-<div class="audioContainer">
-	<audio src="audio.mp3" controls loop="loop" autoplay="autoplay"></audio>
+<div id="interface">
+	<audio controls loop="loop" autoplay="autoplay" id="bgAudio">
+		<source src="audio.mp3">
+		<source src="audio.ogg">
+	</audio>
+	<div class="fb-like" data-href="http://obeijo.co" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+	<div class="audioControls">
+		<div id="soundBtn">
+			<div class="bg"></div>
+		</div>
+	</div>
+	<div class="more">
+		<input type="image" src="images/plus.png" id="plusBtn">
+		<p id="about" style="display: none">criado por alexandre paschoalini e thany sanches. coreografado pela commit para a música lívia de marcelo camelo, interpretada por thomas rorher na rabeca.</p>
+	</div>
 </div>

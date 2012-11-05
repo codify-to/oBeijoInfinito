@@ -1,30 +1,9 @@
 @charset "utf-8";
 
-.fb-like {
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	height: 300px;
-	width: 200px;
-	z-index: 1003;
-}
-
-body {
+html, body {
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
-}
-
-.audioContainer{
-	position: absolute;
-	bottom: 30px;
-	z-index: : 1001;
-	width:100%;
-	text-align: center;
-}
-audio {
-	margin: auto;
-	min-width: 70%;
 }
 
 canvas {
@@ -38,4 +17,66 @@ canvas {
 
 img {
 	display: none;
+}
+
+
+#interface{
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1003;
+	width: 100%;
+	height: 100%;
+}
+.fb-like {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	height: 300px;
+	width: 200px;
+}
+.audioControls {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 46px;
+}
+#soundBtn{
+	position: absolute;
+	left: 0;
+	width: 46px;
+	height: 25px;
+	background: url(../images/soundBg.png);
+}
+#soundBtn .bg{
+	position: absolute;
+	left: 0;
+	width: 46px;
+	height: 25px;
+	background: url(../images/sound.png);
+	opacity: 0.7;
+}
+audio {
+	display: none;
+}
+.more{
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+}
+.more input{
+	cursor: default;
+}
+.more p{
+	position: absolute;
+	display: block;
+	left: 27px;
+	bottom: 14px;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #808080;
+	width: 275px;
+	text-align: justify;
+	pointer-events: none;
 }

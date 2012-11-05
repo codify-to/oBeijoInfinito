@@ -11,6 +11,12 @@ window.drawDebugWorld = false
 window.debug = false
 
 Event.observe window, 'load', =>
+	# Layout stuff
+	$$('#soundBtn').invoke 'observe', 'click', (e)->
+		val = e.layerX;
+		$$('#soundBtn .bg')[0].setStyle({'width': val + "px"});
+		$('bgAudio').volume = Math.max(val/46-0.15,0);
+	
 	# Get all body parts
 	@bodyParts = $$(".bodyPart").reverse()
 	@bodies = {}
@@ -24,7 +30,6 @@ Event.observe window, 'load', =>
 	@groundBodies = []
 	updateGround = ()=>
 		for b in @groundBodies
-			console.log "destroy", b
 			world.DestroyBody(b)
 		
 		# Ground
@@ -47,7 +52,6 @@ Event.observe window, 'load', =>
 		@groundBodies.push world.CreateBody(bodyDef).CreateFixture(fd)
 		bodyDef.position.Set(worldWidth, 0)
 		@groundBodies.push world.CreateBody(bodyDef).CreateFixture(fd)
-		console.log "ground updated"
 
 	updateGround()
 
