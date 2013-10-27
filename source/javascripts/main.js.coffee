@@ -7,7 +7,7 @@ CATEGORY_FRONT_LEG = 32
 
 TOTAL_LIFE_FOCE = 20000
 
-window.drawDebugWorld = false
+window.drawDebugWorld = (window.location.href.indexOf 'debug') > 0
 window.debug = false
 
 Event.observe window, 'load', =>
@@ -56,6 +56,7 @@ Event.observe window, 'load', =>
 		@groundBodies.push world.CreateBody(bodyDef).CreateFixture(fd)
 
 	updateGround()
+	window.onresize = updateGround
 
 	# Put every body part in it's initial position
 	@bodyParts.each (part, index)=>
@@ -98,6 +99,8 @@ Event.observe window, 'load', =>
 		for jointData in joints
 			continue if not jointData.to
 			# 
+			console.log "creating joint from", img.id, "to", jointData.to
+			# 
 			joint = new b2RevoluteJointDef()
 			joint.lowerAngle = (if jointData.lAngle != undefined then jointData.lAngle else -0.25) * Math.PI;
 			joint.upperAngle = (if jointData.uAngle != undefined then jointData.uAngle else 0.25) * Math.PI;
@@ -125,12 +128,11 @@ Event.observe window, 'load', =>
 		# update mouse
 		mouseController.update();
 
-		bodies.cabecas.ApplyImpulse(new b2Vec2(0, -TOTAL_LIFE_FOCE), bodies.cabecas.GetWorldCenter())
-		# 
-		bodies.ela_pe_frente.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.ela_pe_frente.GetWorldCenter())
-		bodies.ela_pe_tras.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.ela_pe_tras.GetWorldCenter())
-		bodies.ele_pe_frente.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.ele_pe_frente.GetWorldCenter())
-		bodies.ele_pe_tras.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.ele_pe_tras.GetWorldCenter())
+		# Forces to keep her standing
+		bodies.cabeca.ApplyImpulse(new b2Vec2(0, -TOTAL_LIFE_FOCE), bodies.cabeca.GetWorldCenter())
+		# # 
+		bodies.pe_esq.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.pe_esq.GetWorldCenter())
+		bodies.pe_dir.ApplyImpulse(new b2Vec2(0, TOTAL_LIFE_FOCE/4), bodies.pe_dir.GetWorldCenter())
 
 		# Update image positions
 		b = world.m_bodyList

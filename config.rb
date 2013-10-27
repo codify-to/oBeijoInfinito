@@ -2,6 +2,8 @@
 # Compass
 ###
 
+activate :livereload
+
 # Susy grids in Compass
 # First: gem install compass-susy-plugin
 # require 'susy'
