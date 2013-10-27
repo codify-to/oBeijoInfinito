@@ -16,6 +16,8 @@ Event.observe window, 'load', =>
 		val = e.layerX;
 		$$('#soundBtn .bg')[0].setStyle({'width': val + "px"});
 		$('bgAudio').volume = Math.max(val/46-0.15,0);
+	$$('#plusBtn').invoke 'observe', 'click', (e)->
+		Effect.toggle 'about', 'appear', {duration:0.3}
 	
 	# Get all body parts
 	@bodyParts = $$(".bodyPart").reverse()
